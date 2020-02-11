@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import TodoForm from './components/todoForm.js';
 import TodoList from './components/todoList.js';
 import "./App.css";
@@ -8,10 +8,23 @@ import "./App.css";
 const App = () => {
   return (
     <BrowserRouter>
-    <Route path="/" component={TodoApp} />
+      <header>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/login">Login</Link>
+        </nav>
+      </header>
+      <Switch>
+        <Route exact path="/" component={TodoApp} />
+        <Route exact path="/login" component={Login} /> 
+      </Switch>
     </BrowserRouter>
   )
 }
+
+const Login = () => <h1>Login</h1>;
+
+
 
 const TodoApp = () => {
 
